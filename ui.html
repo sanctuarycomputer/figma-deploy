@@ -1,0 +1,34 @@
+<div>
+  <button id="desktop">Desktop</button>
+  <button id="tablet">Tablet</button>
+  <button id="mobile">Mobile</button>
+</div>
+
+<iframe id="preview" style="width:100%;height:100%;"></iframe>
+
+<script>
+parent.postMessage({ pluginMessage: { type: 'doit' } }, '*')
+
+document.getElementById("desktop").addEventListener("click", function(){
+  const previewIframe = document.getElementById('preview');
+  previewIframe.style.width = "100%";
+})
+
+document.getElementById("tablet").addEventListener("click", function(){
+  const previewIframe = document.getElementById('preview');
+  previewIframe.style.width = "560px";
+})
+
+document.getElementById("mobile").addEventListener("click", function(){
+  const previewIframe = document.getElementById('preview');
+  previewIframe.style.width = "360px";
+})
+
+onmessage = (event) => {
+  var ifrm = document.getElementById('preview');
+  ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+  ifrm.document.open();
+  ifrm.document.write(event.data.pluginMessage);
+  ifrm.document.close();
+}
+</script>

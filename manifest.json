@@ -1,0 +1,7 @@
+{
+  "name": "figma-deploy",
+  "id": "800739130551791234",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html"
+}
